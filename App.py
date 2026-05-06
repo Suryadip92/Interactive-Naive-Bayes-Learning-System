@@ -29,80 +29,33 @@ st.set_page_config(
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
-    /* ── Sidebar ── */
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-    }
-    [data-testid="stSidebar"] * { color: #e2e8f0 !important; }
-    [data-testid="stSidebar"] .stRadio > label { color: #94a3b8 !important; font-size: 0.75rem; }
 
-    /* ── Main background ── */
-    .stApp { 
+/* ── Global Theme Fix ── */
+.stApp { 
     background: var(--background-color);
     color: var(--text-color);
-    }
+}
 
-    /* ── Step card ── */
-    .step-card {
-        background: var(--secondary-background-color);
-        color: var(--text-color);
-        border-radius: 12px;
-        padding: 1.4rem 1.8rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 1px 4px rgba(0,0,0,.08);
-        border-left: 4px solid #6366f1;
-    }
+/* ── Sidebar ── */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+}
+[data-testid="stSidebar"] * { color: #e2e8f0 !important; }
+[data-testid="stSidebar"] .stRadio > label { color: #94a3b8 !important; font-size: 0.75rem; }
 
-    /* ── Info / formula boxes ── */
-    .info-box {
-        background: #eff6ff;
-        border: 1px solid #bfdbfe;
-        border-radius: 8px;
-        padding: 0.9rem 1.2rem;
-        margin: 0.6rem 0;
-        font-size: 0.9rem;
-        color: var(--text-color); 
-    }
-    .formula-box {
-        background: #faf5ff;
-        border: 1px solid #ddd6fe;
-        border-radius: 8px;
-        padding: 0.9rem 1.2rem;
-        margin: 0.6rem 0;
-        font-family: monospace;
-        font-size: 0.95rem;
-        color: var(--text-color);
-    }
-    .warning-box {
-        background: #fffbeb;
-        border: 1px solid #fde68a;
-        border-radius: 8px;
-        padding: 0.9rem 1.2rem;
-        margin: 0.6rem 0;
-        color: var(--text-color);
-    }
-    .success-box {
-        background: #f0fdf4;
-        border: 1px solid #86efac;
-        border-radius: 8px;
-        padding: 0.9rem 1.2rem;
-        margin: 0.6rem 0;
-         color: var(--text-color); 
-    }
+/* ── Cards ── */
+.step-card, .metric-card {
+    background: var(--secondary-background-color);
+    color: var(--text-color);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    border-left: 4px solid #6366f1;
+}
 
-    /* ── Metric cards ── */
-   .metric-card {
-        background: var(--secondary-background-color);
-        color: var(--text-color);
-        padding: 1rem 1.2rem;
-        text-align: center;
-        box-shadow: 0 1px 4px rgba(0,0,0,.08);
-    }
-    .metric-card h2 { margin: 0; color: #6366f1; }
-    .metric-card p  { margin: 0; color: #64748b; font-size: 0.8rem; }
-
-    /* ── Section header ── */
-    .section-header {
+/* ── Section Header ── */
+.section-header {
     font-size: 1.4rem;
     font-weight: 700;
     color: var(--text-color);
@@ -110,25 +63,73 @@ st.markdown("""
     padding-bottom: 0.4rem;
     margin-bottom: 1rem;
 }
-    /* ── Pipeline step badge ── */
-    .badge {
-        display: inline-block;
-        background: #6366f1;
-        color: white !important;
-        border-radius: 20px;
-        padding: 2px 12px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-right: 8px;
-    }
 
-    /* ── Hide Streamlit branding ── */
-    #MainMenu, footer { visibility: hidden; }
+/* ── Info Boxes (FIXED DARK MODE ISSUE) ── */
+.info-box {
+    background: var(--secondary-background-color);
+    border: 1px solid #6366f1;
+    color: var(--text-color);
+}
 
-    hr { border-color: #e2e8f0; }
+.formula-box {
+    background: var(--secondary-background-color);
+    border: 1px solid #a78bfa;
+    color: var(--text-color);
+}
+
+.warning-box {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid #facc15;
+    color: var(--text-color);
+}
+
+.success-box {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid #22c55e;
+    color: var(--text-color);
+}
+
+/* ── Common box style ── */
+.info-box, .formula-box, .warning-box, .success-box {
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    margin: 0.6rem 0;
+}
+
+/* ── Metric text fix ── */
+.metric-card p {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* ── Small text fix (IMPORTANT) ── */
+small {
+    color: var(--text-color) !important;
+    opacity: 0.7;
+}
+
+/* ── Badge ── */
+.badge {
+    display: inline-block;
+    background: #6366f1;
+    color: white !important;
+    border-radius: 20px;
+    padding: 2px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* ── Divider ── */
+hr {
+    border-color: var(--secondary-background-color);
+}
+
+/* ── Hide branding ── */
+#MainMenu, footer { visibility: hidden; }
+
 </style>
 """, unsafe_allow_html=True)
-
 
 # ─────────────────────────────────────────────
 # SESSION STATE INIT
