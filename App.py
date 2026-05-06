@@ -37,11 +37,15 @@ st.markdown("""
     [data-testid="stSidebar"] .stRadio > label { color: #94a3b8 !important; font-size: 0.75rem; }
 
     /* ── Main background ── */
-    .stApp { background: #f8fafc; }
+    .stApp { 
+    background: var(--background-color);
+    color: var(--text-color);
+    }
 
     /* ── Step card ── */
     .step-card {
-        background: #ffffff;
+        background: var(--secondary-background-color);
+        color: var(--text-color);
         border-radius: 12px;
         padding: 1.4rem 1.8rem;
         margin-bottom: 1rem;
@@ -57,6 +61,7 @@ st.markdown("""
         padding: 0.9rem 1.2rem;
         margin: 0.6rem 0;
         font-size: 0.9rem;
+        color: var(--text-color); 
     }
     .formula-box {
         background: #faf5ff;
@@ -66,6 +71,7 @@ st.markdown("""
         margin: 0.6rem 0;
         font-family: monospace;
         font-size: 0.95rem;
+        color: var(--text-color);
     }
     .warning-box {
         background: #fffbeb;
@@ -73,6 +79,7 @@ st.markdown("""
         border-radius: 8px;
         padding: 0.9rem 1.2rem;
         margin: 0.6rem 0;
+        color: var(--text-color);
     }
     .success-box {
         background: #f0fdf4;
@@ -80,12 +87,13 @@ st.markdown("""
         border-radius: 8px;
         padding: 0.9rem 1.2rem;
         margin: 0.6rem 0;
+         color: var(--text-color); 
     }
 
     /* ── Metric cards ── */
-    .metric-card {
-        background: #ffffff;
-        border-radius: 10px;
+   .metric-card {
+        background: var(--secondary-background-color);
+        color: var(--text-color);
         padding: 1rem 1.2rem;
         text-align: center;
         box-shadow: 0 1px 4px rgba(0,0,0,.08);
@@ -95,14 +103,13 @@ st.markdown("""
 
     /* ── Section header ── */
     .section-header {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #1e293b;
-        border-bottom: 2px solid #6366f1;
-        padding-bottom: 0.4rem;
-        margin-bottom: 1rem;
-    }
-
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-color);
+    border-bottom: 2px solid #6366f1;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+}
     /* ── Pipeline step badge ── */
     .badge {
         display: inline-block;
@@ -262,7 +269,7 @@ if page == "🏠 Home":
             <div class="step-card">
                 <span class="badge">Step {i+1}</span>
                 <strong>{ic} {lb}</strong><br>
-                <small style="color:#64748b">{ds}</small>
+                <small style="color:var(--text-color); opacity:0.7">{ds}</small>
             </div>
             """, unsafe_allow_html=True)
 
@@ -313,7 +320,7 @@ elif page == "📂 1. Dataset Input":
         import io
         return pd.read_csv(io.BytesIO(file_bytes))
 
-    # ── File uploader with 1 MB size check ──
+    # ── File uploader with 5 MB size check ──
     st.markdown(f"#### Upload a CSV file *(max {MAX_UPLOAD_MB} MB)*")
     uploaded = st.file_uploader(
         f"Choose CSV — max {MAX_UPLOAD_MB} MB",
