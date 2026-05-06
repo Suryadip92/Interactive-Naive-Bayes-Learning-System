@@ -173,7 +173,8 @@ Feel free to fork this repository and improve it:
 ## 📄 License
 
 This project is open-source and available under the MIT License.
-
+## 🚀 Live Demo
+[![Open App](https://img.shields.io/badge/Launch-App-blue?style=for-the-badge&logo=streamlit)]
 ---
 
 ## 👨‍💻 Author
